@@ -5,9 +5,11 @@ $primary-color: red;
 }
 
 .main {
-  max-width: 800px;
+  max-width: 1000px;
   min-height: 100vh;
-  padding: 4rem 0;
+  padding: 1em;
+  margin: 0 2.5em;
+  background: #f4c4c4;
 }
 
 .title {
@@ -22,7 +24,7 @@ $primary-color: red;
   padding: 0;
   margin: 4em 0;
 
-  li {
+  & > li {
     margin-bottom: 3em;
     &:last-child {
       margin-bottom: 0;

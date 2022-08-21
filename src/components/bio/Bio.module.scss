@@ -1,0 +1,30 @@
+.bio {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.bioImage {
+  border-radius: 50%;
+  width: 16em;
+  height: auto;
+  margin-left: 0.3em;
+}
+
+.bioContent {
+}
+
+.bioContentName {
+  font-size: 40px;
+  color: #5d5fef;
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+
+.bioContentTagline {
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  color: #718da8;
+  margin-top: 1em;
+  margin-bottom: 0;
+}

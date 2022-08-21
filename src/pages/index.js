@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
+import Bio from '../components/bio/Bio'
 
 import Post from '../components/Post'
 
@@ -14,7 +15,11 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>NextJS Blog</h1>
+        <Bio
+          headshot="https://avatars.githubusercontent.com/u/94413896?v=4"
+          name="Angela Yang"
+          tagline="Fullstack Software Developer"
+        />
 
         <ul className={styles.posts}>
           <li>

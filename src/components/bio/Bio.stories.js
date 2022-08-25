@@ -7,10 +7,9 @@ export default {
 
 const Template = () => (
   <Bio
-    headshot="https://avatars.githubusercontent.com/u/94413896?v=4"
+    headshot="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHeEGpHmxeAkxQH1jb_RmqJGdwVXefp5-88g&usqp=CAU"
     name="Angela Yang"
     tagline="Fullstack Software Developer"
-    role="Trademe software developer"
   />
 )
 

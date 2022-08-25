@@ -11,21 +11,25 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "chromatic": "^6.7.4",
     "netlify-identity-widget": "^1.9.2",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
-    "sass": "^1.54.5"
+    "sass": "^1.54.5",
+    "test-storybook": "^1.0.0"
   },
   "devDependencies": {
     "@applitools/eyes-storybook": "^3.29.3",
     "@babel/core": "^7.18.10",
+    "@storybook/addon-a11y": "^6.5.10",
     "@storybook/addon-actions": "^6.5.10",
     "@storybook/addon-essentials": "^6.5.10",
     "@storybook/addon-interactions": "^6.5.10",
     "@storybook/addon-links": "^6.5.10",
     "@storybook/builder-webpack5": "^6.5.10",
+    "@storybook/jest": "^0.0.10",
     "@storybook/manager-webpack5": "^6.5.10",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.5.10",

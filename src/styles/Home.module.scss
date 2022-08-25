@@ -59,6 +59,11 @@ $primary-color: lightblue;
   font-size: 1.1em;
 }
 
+.formButton:hover {
+  border-color: rgba(255, 255, 255, 1);
+  color: wheat;
+}
+
 .logInButton {
   float: right;
   margin: 0 0.1em 0.1em 0;

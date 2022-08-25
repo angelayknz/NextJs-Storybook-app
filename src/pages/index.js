@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import Bio from '../components/bio/Bio'
@@ -5,12 +6,33 @@ import Post from '../components/Post'
 import { useAuth } from '../hooks/useAuth.js'
 import PostForm from '../components/PostForm/PostForm'
 import netlifyIdentity from 'netlify-identity-widget'
+import { getAllPosts, createPost } from '../lib/posts'
 
-export default function Home({ posts }) {
-  // console.log('post', posts)
-  // const auth = useAuth()
+export default function Home({ posts: defaultPosts }) {
+  const [posts, updatePosts] = useState(defaultPosts)
+
+  const postsSorted = posts.sort(function (a, b) {
+    return new Date(b.date) - new Date(a.date)
+  })
+
   const { user, logIn, logOut } = useAuth()
-  // console.log('user', user)
+
+  async function handleOnSubmit(data, e) {
+    e.preventDefault()
+
+    await createPost(data)
+
+    const response = await fetch(
+      `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Posts`,
+      {
+        method: 'POST',
+        body: JSON.stringify(data),
+      }
+    )
+
+    const posts = await getAllPosts()
+    updatePosts(posts)
+  }
 
   return (
     <div className={styles.container}>
@@ -40,7 +62,7 @@ export default function Home({ posts }) {
         />
 
         <ul className={styles.posts}>
-          {posts.map((post) => {
+          {postsSorted.map((post) => {
             const { content, id, date } = post
             return (
               <li key={id}>
@@ -57,30 +79,14 @@ export default function Home({ posts }) {
           })}
         </ul>
 
-        {user && <PostForm />}
+        {user && <PostForm onSubmit={handleOnSubmit} />}
       </main>
     </div>
   )
 }
 
 export async function getStaticProps() {
-  const response = await fetch(
-    `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Posts`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
-      },
-    }
-  )
-  const { records } = await response.json()
-
-  const posts = records.map((record) => {
-    return {
-      id: record.id,
-      ...record.fields,
-    }
-  })
-
+  const posts = await getAllPosts()
   return {
     props: {
       posts,

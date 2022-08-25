@@ -22,7 +22,7 @@ const PostForm = ({ onSubmit }) => {
         id="content"
         className={styles.formContent}
       ></textarea>
-      <button type="button" className={styles.formButton}>
+      <button type="button" aria-hidden="true" className={styles.formButton}>
         Add new post
       </button>
     </form>

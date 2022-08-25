@@ -1,14 +1,14 @@
 $primary-color: red;
 
 .container {
-  padding: 0 2rem;
+  padding: 0;
 }
 
 .main {
-  max-width: 1000px;
+  // max-width: 1000px;
   min-height: 100vh;
   padding: 1em;
-  margin: 0 2.5em;
+  margin: 0;
   background: #f4c4c4;
 }
 
@@ -64,18 +64,5 @@ $primary-color: red;
   .grid {
     width: 100%;
     flex-direction: column;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .card,
-  .footer {
-    border-color: #222;
-  }
-  .code {
-    background: #111;
-  }
-  .logo img {
-    filter: invert(1);
   }
 }

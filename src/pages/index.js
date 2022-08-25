@@ -6,10 +6,11 @@ import { useAuth } from '../hooks/useAuth.js'
 import PostForm from '../components/PostForm/PostForm'
 import netlifyIdentity from 'netlify-identity-widget'
 
-export default function Home() {
+export default function Home({ posts }) {
+  // console.log('post', posts)
   // const auth = useAuth()
   const { user, logIn, logOut } = useAuth()
-  console.log('user', user)
+  // console.log('user', user)
 
   return (
     <div className={styles.container}>
@@ -39,32 +40,50 @@ export default function Home() {
         />
 
         <ul className={styles.posts}>
-          <li>
-            <Post content="hi there" date="21/08/2022" />
-          </li>
-
-          <li>
-            <Post
-              content="Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-              date="21/08/2022"
-            />
-          </li>
-          <li>
-            <Post
-              content="Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-              date="21/08/2022"
-            />
-          </li>
-          <li>
-            <Post
-              content="Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-              date="21/08/2022"
-            />
-          </li>
+          {posts.map((post) => {
+            const { content, id, date } = post
+            return (
+              <li key={id}>
+                <Post
+                  content={content}
+                  date={new Intl.DateTimeFormat('en-US', {
+                    dateStyle: 'short',
+                    timeStyle: 'short',
+                  }).format(new Date(date))}
+                  // date={new Intl.DateTimeFormat('en-US').format(new Date(date))}
+                />
+              </li>
+            )
+          })}
         </ul>
 
         {user && <PostForm />}
       </main>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const response = await fetch(
+    `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Posts`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
+      },
+    }
+  )
+  const { records } = await response.json()
+
+  const posts = records.map((record) => {
+    return {
+      id: record.id,
+      ...record.fields,
+    }
+  })
+
+  return {
+    props: {
+      posts,
+    },
+  }
 }

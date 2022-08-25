@@ -22,14 +22,6 @@ export default function Home({ posts: defaultPosts }) {
 
     await createPost(data)
 
-    const response = await fetch(
-      `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Posts`,
-      {
-        method: 'POST',
-        body: JSON.stringify(data),
-      }
-    )
-
     const posts = await getAllPosts()
     updatePosts(posts)
   }
@@ -42,21 +34,25 @@ export default function Home({ posts: defaultPosts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <button onClick={logIn}>Log In</button> */}
-      {!user && (
-        <button
-          onClick={() => {
-            netlifyIdentity.open()
-          }}
-        >
-          Log In
-        </button>
-      )}
-      {user && <button onClick={logOut}>Log Out</button>}
-
       <main className={styles.main}>
+        {!user && (
+          <button
+            className={styles.logInButton}
+            onClick={() => {
+              netlifyIdentity.open()
+            }}
+          >
+            Log In
+          </button>
+        )}
+        {user && (
+          <button className={styles.logInButton} onClick={logOut}>
+            Log Out
+          </button>
+        )}
+
         <Bio
-          headshot="https://avatars.githubusercontent.com/u/94413896?v=4"
+          headshot="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHeEGpHmxeAkxQH1jb_RmqJGdwVXefp5-88g&usqp=CAU"
           name="Angela Yang"
           tagline="Fullstack Software Developer"
         />

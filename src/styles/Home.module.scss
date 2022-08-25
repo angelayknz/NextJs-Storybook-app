@@ -1,11 +1,10 @@
-$primary-color: red;
+$primary-color: lightblue;
 
 .container {
   padding: 0;
 }
 
 .main {
-  // max-width: 1000px;
   min-height: 100vh;
   padding: 1em;
   margin: 0;
@@ -60,9 +59,32 @@ $primary-color: red;
   font-size: 1.1em;
 }
 
-@media (max-width: 600px) {
-  .grid {
+.logInButton {
+  float: right;
+  margin: 0 0.1em 0.1em 0;
+  transition: all 0.2s;
+  background: #f14ebd;
+  border-radius: 2em;
+  color: white;
+  border: 0.16em solid rgba(255, 255, 255, 0);
+  padding: 0.6em 1em;
+  font-size: 1.1em;
+  text-align: center;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+}
+
+.logInButton:hover {
+  border-color: rgba(255, 255, 255, 1);
+}
+
+@media (max-width: 992px) {
+  .main {
     width: 100%;
-    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 0.6 1.6em;
   }
 }

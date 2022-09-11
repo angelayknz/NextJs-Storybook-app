@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "chromatic": "^6.7.4",
+    "framer-motion": "^7.3.2",
     "netlify-identity-widget": "^1.9.2",
     "next": "12.2.5",
     "react": "18.2.0",

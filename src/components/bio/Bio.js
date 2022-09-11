@@ -1,3 +1,4 @@
+import AnimatedTextWord from '../AnimatedTextWord'
 import styles from './Bio.module.scss'
 
 export default function Bio({ headshot, name, tagline, role }) {
@@ -11,7 +12,10 @@ export default function Bio({ headshot, name, tagline, role }) {
         <div className={styles.bioContent}>
           <p className={styles.bioContentName}>{name}</p>
           <p className={styles.bioContentTagline}>{tagline}</p>
-          <p className={styles.bioContentRole}>{role}</p>
+          <hr />
+          <div className={styles.animation}>
+            <AnimatedTextWord text={'HTML CSS JAVASCRIPT C# REACT'} />
+          </div>
         </div>
       </div>
     </>

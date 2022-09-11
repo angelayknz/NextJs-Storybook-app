@@ -23,3 +23,17 @@ a {
   padding: 0.6em 1em;
   font-size: 1.1em;
 }
+
+.animation {
+  background: #ff0000;
+  background: linear-gradient(
+    to right,
+    #ff0000 0%,
+    #ffff00 25%,
+    #05c1ff 50%,
+    #ffff00 75%,
+    #ff0000 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

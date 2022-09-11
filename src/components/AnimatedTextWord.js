@@ -36,13 +36,18 @@ const AnimatedTextWord = ({ text }) => {
 
   return (
     <motion.div
-      style={{ overflow: 'hidden', display: 'flex', fontSize: '1.2rem' }}
+      style={{
+        overflow: 'hidden',
+        display: 'flex',
+        fontSize: '1.2rem',
+      }}
       variants={container}
       initial="hidden"
       animate="visible"
     >
       {words.map((word, index) => (
         <motion.span
+          className="bioAnimation"
           variants={child}
           style={{
             marginRight: '10px',

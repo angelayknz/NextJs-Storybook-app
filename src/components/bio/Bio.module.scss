@@ -38,8 +38,18 @@
   .bioContentTagline {
     margin-left: 25px;
   }
+}
 
-  .animation {
-    font-size: 16px;
+@media (max-width: 469px) {
+  .bio {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bioContent,
+  .bioContentName,
+  .bioContentTagline,
+  .bioAnimation {
+    margin-left: 35px;
   }
 }
